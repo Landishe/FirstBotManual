@@ -1,0 +1,10 @@
+<test>
+    <test-case id="Hello">
+        <a>Назови свое имя</a>
+        <q>Алексей</q>
+    </test-case>
+    <test-case id="Goodbye">
+        <q>Прощай</q>
+        <q>Прощай Алексей</q>
+    </test-case>
+</test>
