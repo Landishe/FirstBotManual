@@ -7,7 +7,7 @@ theme: /
         script:
             $context.session = {};
         a: Привет, назови свое имя</a>
-        go!: /Hello
+        go: /Hello
 
     state: Hello
             q: * $Name *
