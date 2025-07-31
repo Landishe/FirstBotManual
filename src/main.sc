@@ -6,16 +6,16 @@ theme: /
                 $context.client = {};
         
         a: Привет, назови свое имя</a>
-        go!: Приветствие
+        go!: Hallo
 
-    state: Приветствие
-        intent!:/Приветствие
+    state: Hallo
+        intent!: /Hallo
             q: * $Name*
             script:
                 $client.userName = parseTree._Name;
             a: Привет {{$client.userName}}
-        go!: Прощание
+        go!: Bue
 
-    state: Прощание 
-        intent!: Прощание
+    state: Bue 
+        intent!: Bue
         a: Прощай {{$client.userName}}
