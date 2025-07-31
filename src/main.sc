@@ -5,7 +5,7 @@ theme: /
     state: start
         q!: regex</start>
             script:
-                $context.client = {};
+                $session.client = {};
         
         a: Привет, назови свое имя</a>
         go!: Hallo
@@ -14,10 +14,10 @@ theme: /
         intent!: /Hallo
             q: * $Name*
             script:
-                $client.userName = parseTree._Name;
+                $session.userName = parseTree._Name;
             a: Привет {{$session.userName}}
         go!: goodbye
 
     state: goodbye 
         intent!: goodbye
-        a: Прощай {{$client.userName}}
+        a: Прощай {{$session.userName}}
