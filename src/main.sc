@@ -14,7 +14,7 @@ theme: /
             script:
                 $session.userName = $parseTree._Name;
             a: Привет {{$session.userName}}
-            go!: /Goodbye
+            go: /Goodbye
 
     state: Goodbye 
         q: * (прощай/пока/досвидания) *
