@@ -1,3 +1,5 @@
+require: name/name.sc
+    module: sys.zb-common
 
 theme: /
     state: start
