@@ -3,18 +3,18 @@ require: name/name.sc
 
 theme: /
     state: start
-        q!: regex</start>
+        q!: $regex</start>
             script:
                 $session = {};
         a: Привет, назови свое имя</a>
         go!: Hallo
 
     state: Hallo
-            q: * $Name*
+            q: * $Name *
             script:
                 $session.userName = $parseTree._Name;
             a: Привет {{$session.userName}}
-        go!: goodbye
+            go!: goodbye
 
     state: goodbye 
         q: Прощай
