@@ -9,13 +9,17 @@ theme: /
         a: Привет, назови свое имя</a>
         go!: Hallo
 
-    state: Hallo
-            q: * $Name *
-            script:
-                $session.userName = $parseTree._Name;
-            a: Привет {{$session.userName}}
-            go!: goodbye
+        state: Hallo
+                q: * $Name *
+                script:
+                    $session.userName = $parseTree._Name;
+                a: Привет {{$session.userName}}
+                go!: goodbye
 
-    state: goodbye 
-        q: Прощай
-        a: Прощай {{$session.userName}}
+        state: goodbye 
+            q: Прощай
+            a: Прощай {{$session.userName}}
+    
+    state: CatchAll
+        event: noMatch
+        a: Извините, я вас не понял. Попробуйте сказать "Меня зовут [ваше имя]"
