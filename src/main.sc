@@ -4,8 +4,8 @@ require: name/name.sc
 theme: /
     state: start
         q!: $regex</start>
-            script:
-                $context.session = {};
+        script:
+            $context.session = {};
         a: Привет, назови свое имя</a>
         go!: /Hello
 
