@@ -17,7 +17,7 @@ theme: /
                 go!: Goodbye
 
         state: Goodbye 
-            q: Прощай
+            q: * (прощай/пока/досвидания) *
             a: Прощай {{$session.userName}}
     
     state: NoMatch
