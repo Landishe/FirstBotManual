@@ -1,0 +1,11 @@
+name: BotForHi
+enteryPoint:
+  - main.sc
+
+botEngine: v2
+language: ru
+
+nlp:
+  intentNoMatchThersholds:
+    phrases: 0.2
+    patterns: 0.2
