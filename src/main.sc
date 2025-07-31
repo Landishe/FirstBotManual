@@ -12,9 +12,8 @@ theme: /
     state: Hello
             q: * $Name *
             script:
-                var name = $parseTree._Name
-                # $session.userName = $parseTree._Name;
-            a: Привет {{$name}}
+                $session.userName = $parseTree._Name;
+            a: Привет {{session.userName}}
             go: /Goodbye
 
     state: Goodbye 
