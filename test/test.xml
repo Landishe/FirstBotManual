@@ -1,7 +1,9 @@
 <test>
     <test-case id="Hello">
+        <a state="Hello"/>
         <a>Привет</a>
         <q>Алексей</q>
+        <s>Привет Алексей</a>
     </test-case>
     <test-case id="Goodbye">
         <q>Прощай</q>
