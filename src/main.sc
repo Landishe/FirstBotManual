@@ -1,12 +1,11 @@
-require: name/name.sc
-    module = sys.zb-common
+# require: name/name.sc
+#     module = sys.zb-common
 
 theme: /
     state: start
         q!: regex</start>
-            script:
-                $session.client = {};
-        
+            # script:
+            #     $session.client = {};
         a: Привет, назови свое имя</a>
         go!: Hallo
 
