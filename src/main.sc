@@ -11,7 +11,6 @@ theme: /
         go!: Hallo
 
     state: Hallo
-        intent!: /Hallo
             q: * $Name*
             script:
                 $session.userName = $parseTree._Name;
@@ -19,5 +18,5 @@ theme: /
         go!: goodbye
 
     state: goodbye 
-        intent!: goodbye
+        q: Прощай
         a: Прощай {{$session.userName}}
