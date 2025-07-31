@@ -5,16 +5,16 @@ theme: /
     state: start
         q!: $regex</start>
             script:
-                $client = {};
+                client = {};
         a: Привет, назови свое имя</a>
-        go!: Hello
+        go!: /Hello
 
         state: Hello
                 q: * $Name *
                 script:
                     $client.userName = $parseTree._Name;
                 a: Привет {{$client.userName}}
-                go!: Goodbye
+                go!: /Goodbye
 
         state: Goodbye 
             q: * (прощай/пока/досвидания) *
