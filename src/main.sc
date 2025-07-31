@@ -5,20 +5,20 @@ theme: /
     state: start
         q!: $regex</start>
             script:
-                $session = {};
+                $client = {};
         a: Привет, назови свое имя</a>
         go!: Hello
 
         state: Hello
                 q: * $Name *
                 script:
-                    $session.userName = $parseTree._Name;
-                a: Привет {{$session.userName}}
+                    $client.userName = $parseTree._Name;
+                a: Привет {{$client.userName}}
                 go!: Goodbye
 
         state: Goodbye 
             q: * (прощай/пока/досвидания) *
-            a: Прощай {{$session.userName}}
+            a: Прощай {{$client.userName}}
     
     state: NoMatch
         event: noMatch
