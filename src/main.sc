@@ -1,5 +1,5 @@
 require: name/name.sc
-    module: sys.zb-common
+    module = sys.zb-common
 
 theme: /
     state: start
@@ -14,7 +14,7 @@ theme: /
         intent!: /Hallo
             q: * $Name*
             script:
-                $session.userName = parseTree._Name;
+                $session.userName = $parseTree._Name;
             a: Привет {{$session.userName}}
         go!: goodbye
 
