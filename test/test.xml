@@ -1,6 +1,6 @@
 <test>
     <test-case id="Hello">
-        <a>Назови свое имя</a>
+        <a>Привет</a>
         <q>Алексей</q>
     </test-case>
     <test-case id="Goodbye">
