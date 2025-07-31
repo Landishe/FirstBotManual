@@ -6,7 +6,7 @@ theme: /
         q!: $regex</start>
         script:
             $context.session = {};
-        a: Привет, назови свое имя</a>
+        a: Привет, назови свое имя
         go: /Hello
 
     state: Hello
