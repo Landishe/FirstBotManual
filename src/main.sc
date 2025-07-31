@@ -14,7 +14,7 @@ theme: /
             script:
                 var name = $parseTree._Name
                 # $session.userName = $parseTree._Name;
-            a: Привет {{name}}
+            a: Привет {{$name}}
             go: /Goodbye
 
     state: Goodbye 
@@ -23,4 +23,4 @@ theme: /
     
     state: NoMatch
         event: noMatch
-        a: Извините, я вас не понял. Попробуйте сказать "Меня зовут [ваше имя]"
+        a: Извините, я вас не понял. Попробуйте сказать "Меня зовут [ваше имя]" 
