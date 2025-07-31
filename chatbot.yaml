@@ -1,5 +1,5 @@
 name: BotForHi
-enteryPoint:
+entryPoint:
   - main.sc
 
 botEngine: v2
