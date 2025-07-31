@@ -15,9 +15,9 @@ theme: /
             q: * $Name*
             script:
                 $client.userName = parseTree._Name;
-            a: Привет {{$client.userName}}
-        go!: Bue
+            a: Привет {{$session.userName}}
+        go!: goodbye
 
-    state: Bue 
-        intent!: Bue
+    state: goodbye 
+        intent!: goodbye
         a: Прощай {{$client.userName}}

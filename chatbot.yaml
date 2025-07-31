@@ -6,6 +6,6 @@ botEngine: v2
 language: ru
 
 nlp:
-  intentNoMatchThersholds:
+  intentNoMatchThresholds:
     phrases: 0.2
     patterns: 0.2
