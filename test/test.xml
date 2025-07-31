@@ -1,16 +1,13 @@
 <test>
     <test-case id="start">
-        <q>/start</q>
-        <a state="start"/>
-        <a>Привет, назови свое имя</a>
+        <a state="/start">Привет, назови свое имя</a>
     </test-case>
     <test-case id="Hello">
-        <q>/start</q>
         <q>Алексей</q>
-        <a state="Hello">Привет Алексей</a>
+        <a state="/Hello">Привет Алексей</a>
     </test-case>
     <test-case id="Goodbye">
         <q>Прощай</q>
-        <a state="Goodbye">Прощай Алексей</a>
+        <a state="/Goodbye">Прощай Алексей</a>
     </test-case>
 </test>
