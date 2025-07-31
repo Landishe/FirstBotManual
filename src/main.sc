@@ -7,19 +7,19 @@ theme: /
             script:
                 $session = {};
         a: Привет, назови свое имя</a>
-        go!: Hallo
+        go!: Hello
 
-        state: Hallo
+        state: Hello
                 q: * $Name *
                 script:
                     $session.userName = $parseTree._Name;
                 a: Привет {{$session.userName}}
-                go!: goodbye
+                go!: Goodbye
 
-        state: goodbye 
+        state: Goodbye 
             q: Прощай
             a: Прощай {{$session.userName}}
     
-    state: CatchAll
+    state: NoMatch
         event: noMatch
         a: Извините, я вас не понял. Попробуйте сказать "Меня зовут [ваше имя]"
