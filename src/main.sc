@@ -5,7 +5,7 @@ theme: /
     state: start
         q!: regex</start>
             script:
-                $session.client = {};
+                $session = {};
         a: Привет, назови свое имя</a>
         go!: Hallo
 
