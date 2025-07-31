@@ -10,7 +10,7 @@ theme: /
         go!: /Hello
 
         state: Hello
-                q: * $Name *
+            q: * $Name *
                 script:
                     $client.userName = $parseTree._Name;
                 a: Привет {{$client.userName}}
