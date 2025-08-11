@@ -1,6 +1,6 @@
 require: name/name.sc
     module = sys.zb-common
-    
+
 require: clients.csv
     name = clients
     var = clients
@@ -23,7 +23,7 @@ theme: /
         go: /checkClient
 
     state: checkClient
-        q: * {idOrder = /(\d+)/} *
+        q: * {idOrder = \/(\d+)\/} *
         script:
             var foundOrder  = $parseTree._orderNumber;
 
