@@ -28,9 +28,9 @@ theme: /
                 var foundOrder  = $parseTree._number;
 
                 for(var i = 0; i < clients.length; i++ ) {
-                    # проверяется с $session.userName вместо orderNumber??
+                    
                     if(clients[i].idOrder == foundOrder){
-                        var statusText = getStatusText(clients[i].status)
+                        var statusText = getStatusText(clients[i].status);
                         return {
                             text: `Найден заказ ${foundOrder}:
                                 Клиент: ${clients[i].name}
