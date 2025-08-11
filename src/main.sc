@@ -32,9 +32,9 @@ theme: /
                     if(clients[i].idOrder == foundOrder){
                         var statusText = getStatusText(clients[i].status);
                         return {
-                            text: `Найден заказ ${foundOrder}:
+                            text: "Найден заказ ${foundOrder}
                                 Клиент: ${clients[i].name}
-                                Статус: ${statusText}`,
+                                Статус: ${statusText}",
                                 buttons: ["Назад"]
                         };
                     }
