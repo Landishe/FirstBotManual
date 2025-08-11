@@ -41,7 +41,7 @@ theme: /
                 }
                 return {
                     text: `Заказ ${foundOrder} не найден`
-                };
+            };
         go: Goodbye
 
     state: Goodbye 
