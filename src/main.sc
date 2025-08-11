@@ -34,7 +34,7 @@ theme: /
                         return {
                             text: `Найден заказ ${foundOrder}:
                                 Клиент: ${clients[i].name}
-                                Статус: ${statusText}`
+                                Статус: ${statusText}`,
                                 buttons: ["Назад"]
                         };
                     }
