@@ -23,7 +23,7 @@ theme: /
         go: /checkClient
 
     state: checkClient
-        q: * /(\d+/g)/ *
+        q!: * (\d+) *
             script:
                 var foundOrder  = $parseTree._orderNumber;
 
