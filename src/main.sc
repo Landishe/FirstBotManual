@@ -1,9 +1,10 @@
 require: name/name.sc
     module = sys.zb-common
+    
 require: clients.csv
-name = clients
-var = clients
- 
+    name = clients
+    var = clients
+    
 
 theme: /
     state: start
