@@ -38,8 +38,7 @@ theme: /
                                 buttons: ["Назад"]
                         };
                     }
-                }
-                return {
+                } else {
                     text: `Заказ ${foundOrder} не найден`
                 };
         go: Goodbye
