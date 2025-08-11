@@ -22,26 +22,30 @@ theme: /
         go: /checkClient
 
     state: checkClient
-        q: 
+        q: * {idOrder = /(\d+)/} *
         script:
-            var orderNumber = $request.query;
+            var foundOrder  = $parseTree._orderNumber;
 
             for(var i = 0; i < clients.length; i++ ) {
                 # проверяется с $session.userName вместо orderNumber??
-                if(clients[i].idOrder == orderNumber){
-                    
+                if(clients[i].idOrder == foundOrder){
+                    var statusText = getStatusText(client[i].status)
+                    return {
+                        text: `Найден заказ ${foundOrder}:
+                               Клиент: ${clients[i].name}
+                               Статус: ${statusText}`
+                            buttons: ["Назад"]
+                    };
                 }
             }
+            return {
+                text: `Заказ ${foundOrder} не найден`
+            };
 
-    state: Order clarification
-        a: {{session.userName}} уточните номер заказа
-        q: *
-
-
-    state: Goodbye 
+       state: Goodbye 
         q: * (прощай/пока/досвидания) *
         a: Прощай {{$session.userName}}
     
     state: NoMatch
         event: noMatch
-        a: Извините, я вас не понял. Попробуйте сказать "Меня зовут [ваше имя]" 
+        a: ожалуйста, укажите номер заказа цифрами, например: "мой заказ 12345"
