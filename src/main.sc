@@ -44,7 +44,7 @@ theme: /
                 };
         go: Goodbye
 
-       state: Goodbye 
+    state: Goodbye 
         q: * (прощай/пока/досвидания) *
         a: Прощай {{$session.userName}}
     
