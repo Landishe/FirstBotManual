@@ -20,17 +20,17 @@ theme: /
         script:
             $session.userName = $parseTree._Name.name;
         a: Привет {{$session.userName}}
-        go: /checkClient
+        go!: /checkClient
 
     state: checkClient
         q!: * (\d+) *
             script:
-                var foundOrder  = $parseTree._orderNumber;
+                var foundOrder  = $parseTree._number;
 
                 for(var i = 0; i < clients.length; i++ ) {
                     # проверяется с $session.userName вместо orderNumber??
                     if(clients[i].idOrder == foundOrder){
-                        var statusText = getStatusText(client[i].status)
+                        var statusText = getStatusText(clients[i].status)
                         return {
                             text: `Найден заказ ${foundOrder}:
                                 Клиент: ${clients[i].name}
@@ -41,7 +41,7 @@ theme: /
                 }
                 return {
                     text: `Заказ ${foundOrder} не найден`
-            };
+                };
         go: Goodbye
 
     state: Goodbye 
