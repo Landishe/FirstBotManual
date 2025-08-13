@@ -13,34 +13,19 @@ theme: /
             $context.session = {};
             $context.temp = {}
         a: Добрый день, назовте ФИО или Номер заказа
-        go: /Hello
+        
 
-    state: Hello
-        q: * $Name *
-        script:
-            $session.userName = $parseTree._Name.name;
-        a: Привет {{$session.userName}}
-        go!: /checkClient
-
-    state: checkClient
-        q!: * (\d+) *
+        state: checkClient
+            q!: * (\d+) *
             script:
-                var foundOrder  = $parseTree._number;
-
+                var foundOrder = $request.query(/\D+/g, '');
                 for(var i = 0; i < clients.length; i++ ) {
-                    
                     if(clients[i].idOrder == foundOrder){
-                        var statusText = getStatusText(clients[i].status);
-                        return {
-                            text: "Найден заказ ${foundOrder}
-                                Клиент: ${clients[i].name}
-                                Статус: ${statusText}",
-                                buttons: ["Назад"]
-                        };
+                        а: правильно
                     }
                 }
-                return text: `Заказ ${foundOrder} не найден`
-        go: Goodbye
+                
+            go!: /Goodbye
 
     state: Goodbye 
         q: * (прощай/пока/досвидания) *
