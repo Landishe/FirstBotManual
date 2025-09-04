@@ -17,44 +17,58 @@ theme: /
             $context.temp = {}
         a: Добрый день, назовте ФИО или Номер заказа
         
-        state: checkOrder
-            q!: * *
-            script:
-                var queryClient = $request.query
-                log(queryClient);
-                var queryOrder = $request.query.replace(/[^0-9]/g, '');
-                for(var id in clients) {
-                    var idOrder = clients[id].value.id
-                    if(idOrder ==  queryOrder) {
-                        $reactions.answer("такой заказ есть");
-                        break;
-                    } else {
-                        $reactions.answer("такого заказа нет, проверьте номер заказа или ФИО");
-                        break;
-                        $reactions.transition("/checkClients");
-                    };
+    state: checkOrder
+        q!: $regexp_i<.*\d+.*>
+        script:
+            $context.queryClient = $request.query
+            var queryOrder = $request.query.replace(/[^0-9]/g, '');
+            var findId = false
+            log($context.queryClient)
+            log(queryOrder)
+            for(var id in clients) {
+                
+                var idOrder = clients[id].value.id
+                if(idOrder ==  queryOrder) {
+                    $reactions.answer(clients[id].value.name + "\nВаш заказ: " + idOrder + "\nВ статусе: " +  clients[id].value.status );
+                    findId = true;
+                    $reactions.answer("Проверим еще один заказ?");
+                    $reactions.buttons({text: "Да", transition: "/start"});
+                    $reactions.buttons({text: "нет", transition: "/Goodbye"});
+                }
+            }
+                if(!findId){
+                    $reactions.answer("такого заказа нет, проверьте номер заказа или ФИО");
+                    $reactions.buttons({ text: "Ввести заказ еще раз", transition: "/start" });
+                    $reactions.buttons({ text: "Ввести ФИО", transition: "/checkClients" });
                 };
-            state: checkClients
-                q: * *
-                script: 
-                    
-                    log(clients["1"].alternateNames);
-                    var queryClients = $request.query.replace(/D+/g, '');
-                    for (var i in clients) {
-                        var clientsName = clients[i].alternateNames;
-                        if(queryClients ==  clientsName) {
-                            $reactions.answer("сюда залетел");
-                            break
-                        } else {
-                            $reactions.answer("дубль");
-                            break
-                        }
-                    };
+            
+    state: checkClients
+        a: введите ваше ФИО
+        
+            
+    state: findClients
+        q!: *
+        script: 
+            var queryClients = $request.query.replace(/D+/g, '');
+            var findClients = false
+            for (var i in clients) {
+                var nameClients = clients[i].value.name;
+                if(nameClients === queryClients) {
+                    $reactions.answer(nameClients + "\nВаш заказ: " + clients[i].value.id + "\nВ статусе: " +  clients[i].value.status); 
+                    findClients = true
+                } 
+            };
+            if (!findClients){
+                $reactions.answer("пользователь не найден");}
+        if $session.findClients = true
+            a: Пользователь не найден
+        else:
+            a: $reactions.answer(nameClients + "\nВаш заказ: " + clients[i].value.id + "\nВ статусе: " +  clients[i].value.status);
 
     state: Goodbye 
-        q: * (прощай/пока/досвидания) *
-        a: Прощай {{$session.userName}};
+        q!: * (прощай/пока/досвидания) *
+        a: Спасибо что обратились к нам {{$session.userName}};
     
     state: NoMatch
-        event: noMatch
+        event!: noMatch
         a: Мы не получили ответ
