@@ -13,14 +13,13 @@ theme: /
     state: start
         q!: $regex</start>
         script:
-            $context.session = {};
-            $context.temp = {}
+            $session = {};
+            
         a: Добрый день, назовте ФИО или Номер заказа
         
     state: checkOrder
         q!: $regexp_i<.*\d+.*>
         script:
-            $context.queryClient = $request.query
             var queryOrder = $request.query.replace(/[^0-9]/g, '');
             var findId = false
             log($context.queryClient)
@@ -49,7 +48,7 @@ theme: /
         q!: *
         script: 
             var queryClients = $request.query.replace(/D+/g, '');
-            $context.findClients = false
+            $session.findClients = false
             for (var i in clients) {
                 var nameClients = clients[i].value.name;
                 if(nameClients == queryClients) {
@@ -59,7 +58,7 @@ theme: /
                     $reactions.buttons({text: "нет", transition: "/Goodbye"});
                 } 
             };
-            if (!$context.findClients){
+            if (!$session.findClients){
                 $reactions.answer("пользователь не найден 1");
                 $reactions.answer("такого заказа нет, проверьте номер заказа или ФИО");
                 $reactions.buttons({ text: "Ввести заказ еще раз", transition: "/start" });
