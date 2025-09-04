@@ -24,7 +24,6 @@ theme: /
             var queryOrder = $request.query.replace(/[^0-9]/g, '');
             var findId = false
             log($context.queryClient)
-            log(queryOrder)
             for(var id in clients) {
                 
                 var idOrder = clients[id].value.id
@@ -50,20 +49,22 @@ theme: /
         q!: *
         script: 
             var queryClients = $request.query.replace(/D+/g, '');
-            var findClients = false
+            $context.findClients = false
             for (var i in clients) {
                 var nameClients = clients[i].value.name;
-                if(nameClients === queryClients) {
+                if(nameClients == queryClients) {
                     $reactions.answer(nameClients + "\nВаш заказ: " + clients[i].value.id + "\nВ статусе: " +  clients[i].value.status); 
-                    findClients = true
+                    $context.findClients = true
+                    $reactions.buttons({text: "Да", transition: "/start"});
+                    $reactions.buttons({text: "нет", transition: "/Goodbye"});
                 } 
             };
-            if (!findClients){
-                $reactions.answer("пользователь не найден");}
-        if $session.findClients = true
-            a: Пользователь не найден
-        else:
-            a: $reactions.answer(nameClients + "\nВаш заказ: " + clients[i].value.id + "\nВ статусе: " +  clients[i].value.status);
+            if (!$context.findClients){
+                $reactions.answer("пользователь не найден 1");
+                $reactions.answer("такого заказа нет, проверьте номер заказа или ФИО");
+                $reactions.buttons({ text: "Ввести заказ еще раз", transition: "/start" });
+                $reactions.buttons({text: "нет", transition: "/Goodbye"});
+            }
 
     state: Goodbye 
         q!: * (прощай/пока/досвидания) *
